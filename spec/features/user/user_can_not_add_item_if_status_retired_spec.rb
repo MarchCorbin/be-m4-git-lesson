@@ -7,13 +7,11 @@ RSpec.describe "User can't add item to cart" do
 
   scenario "if item status is retired, OBVIOUSLY" do
     visit item_path(item1)
-
     expect(page).to have_button("Add to Cart")
     expect(page).to have_content(item1.title)
     expect(page).to have_content(item1.description)
     expect(page).to have_content(item1.price)
     expect(page).to have_link("Cart (0)")
-
     click_on "Add to Cart"
 
     expect(current_path).to eq(items_path)
